@@ -14,8 +14,6 @@ const climbingName = "Climbing";
 const communityName = "Community";
 const profileName = "Profile";
 
-
-
 const tab= createBottomTabNavigator();
 
 export default function BottomNavBar(){
