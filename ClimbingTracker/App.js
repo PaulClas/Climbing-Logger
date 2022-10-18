@@ -8,10 +8,6 @@ import TopNavBar from './app/components/topNavigationBar';
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      {/* <TopNavBar/> */}
-      {/* <Text style={styles.big}>B</Text>
-      <Text>Beta</Text>
-      <Text>Climbing Log and Training App</Text> */}
       <StatusBar style="auto" />
       <BottomNavBar/>
     </SafeAreaView>

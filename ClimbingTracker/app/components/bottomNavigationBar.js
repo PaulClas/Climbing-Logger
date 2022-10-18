@@ -1,5 +1,6 @@
 import * as React from 'react';
-import {NavigationContainer} from '@react-navigation/native'
+import { View, Text, Image } from 'react-native';
+import {NavigationContainer, TouchableOpacity, useNavigation} from '@react-navigation/native'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import IonIcons from 'react-native-vector-icons/Ionicons';
 //Screens
@@ -7,13 +8,33 @@ import HomeScreen from '../screens/HomeScreen';
 import ClimbingScreen from '../screens/ClimbingScreen';  
 import CommunityScreen from '../screens/CommunityScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import GymScreen from '../screens/MygymScreen';
+import SettingsScreen from '../screens/SettingsScreen';
 
 //Screen Names
 const homeName = "Home";
 const climbingName = "Climbing";
 const communityName = "Community";
 const profileName = "Profile";
+const gymName = "My Gym";
+const settingsName= "Settings";
 
+function HeaderOptions({navigation}) {
+    return (
+        <View style={{
+            flexDirection: 'row',
+        }}>
+            <IonIcons 
+                name="wallet-outline" 
+                size={30} 
+                style={{padding:10}}/>
+            <IonIcons 
+                name="settings-outline" 
+                size={30} 
+                style={{padding:10}}/>
+        </View>
+    );
+}
 const tab= createBottomTabNavigator();
 
 export default function BottomNavBar(){
@@ -41,10 +62,42 @@ export default function BottomNavBar(){
                         return <IonIcons name={iconName} size={size} color={color} />
                     },
                 })}>
-                <tab.Screen name={homeName} component={HomeScreen} />
-                <tab.Screen name={climbingName} component={ClimbingScreen} />
-                <tab.Screen name={communityName} component={CommunityScreen} />
-                <tab.Screen name={profileName} component={ProfileScreen} />
+                <tab.Screen 
+                    name={homeName} 
+                    component={HomeScreen}
+                    options={{ 
+                        headerRight:() =>(
+                            <HeaderOptions />
+                        )
+                    }}
+                />
+                <tab.Screen 
+                    name={climbingName} 
+                    component={ClimbingScreen}  
+                    options={{ 
+                        headerRight:() =>(
+                            <HeaderOptions />
+                        )
+                    }}
+                />
+                <tab.Screen 
+                    name={communityName} 
+                    component={CommunityScreen}
+                    options={{ 
+                        headerRight:() =>(
+                            <HeaderOptions />
+                        )
+                    }} 
+                />
+                <tab.Screen 
+                    name={profileName} 
+                    component={ProfileScreen}
+                    options={{ 
+                        headerRight:() =>(
+                            <HeaderOptions />
+                        )
+                    }} 
+                />
             </tab.Navigator>
         </NavigationContainer>
 
