@@ -5,11 +5,11 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 //Screens
-import HomeScreen from '../screens/HomeScreen';
-import ClimbingScreen from '../screens/ClimbingScreen';  
-import CommunityScreen from '../screens/CommunityScreen';
-import ProfileScreen from '../screens/ProfileScreen';
-import GymScreen from '../screens/MygymScreen';
+import HomeScreen from '../../screens/HomeScreen';
+import ClimbingScreen from '../../screens/ClimbingScreen';  
+import CommunityScreen from '../../screens/CommunityScreen';
+import ProfileScreen from '../../screens/ProfileScreen';
+import GymScreen from '../../screens/MygymScreen';
 
 //Screen Names
 const homeName = "Home";
@@ -44,11 +44,9 @@ export default function BottomNavBar(){
                     },
                     tabBarStyle: {height:80, backgroundColor: '#fff', borderTopWidth: 0, elevation: 0},
                     tabBarLabelStyle: {fontSize: 12, fontWeight: 'bold', marginBottom: 10},
-                })}
-                tabBarOptions={{
                     activeTintColor: 'tomato',
                     inactiveTintColor: 'gray',
-                }}
+                })}
             >
                 <tab.Screen name={homeName} component={HomeScreen} />
                 <tab.Screen name={gymName} component={GymScreen} />
