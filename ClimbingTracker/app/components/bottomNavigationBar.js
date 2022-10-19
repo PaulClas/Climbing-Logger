@@ -2,6 +2,7 @@ import * as React from 'react';
 import { View, Text, Image } from 'react-native';
 import {NavigationContainer, TouchableOpacity, useNavigation} from '@react-navigation/native'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 //Screens
 import HomeScreen from '../screens/HomeScreen';
@@ -19,23 +20,51 @@ const profileName = "Profile";
 const gymName = "My Gym";
 const settingsName= "Settings";
 
-function HeaderOptions({navigation}) {
+function HeaderOptions() {
+    const navigation = useNavigation();
     return (
-        <View style={{
-            flexDirection: 'row',
-        }}>
-            <IonIcons 
-                name="wallet-outline" 
-                size={30} 
-                style={{padding:10}}/>
-            <IonIcons 
-                name="settings-outline" 
-                size={30} 
-                style={{padding:10}}/>
-        </View>
+            <View style={{
+                flexDirection: 'row',
+            }}>
+                <IonIcons 
+                    name="wallet-outline" 
+                    size={30} 
+                    style={{padding:10}}
+                    onPress={() => navigation.navigate(gymName)}/>
+                <IonIcons 
+                    name="settings-outline" 
+                    size={30} 
+                    style={{padding:10}}
+                    onPress={() => navigation.navigate(settingsName)}/>
+            </View>
     );
 }
+
+function Nav(){
+    return(
+        <stack.Navigator
+            screenOptions={({route}) => ({
+                tabBarIcon: ({focused, color, size}) => {
+                    let iconName;
+                    let rn = route.name;
+                    if(rn === gymName){
+                        iconName = focused ? 'wallet' : 'wallet-outline';
+                    } else if(rn === climbingName){
+                        iconName = focused ? 'settings' : 'settings-outline';
+                    }
+                    return <IonIcons name={iconName} size={size} color={color} />
+                },
+            })}
+        >
+            <stack.Screen name={gymName} component={GymScreen} />
+            <stack.Screen name={settingsName} component={SettingsScreen} />
+        </stack.Navigator>
+    )
+}
+
 const tab= createBottomTabNavigator();
+
+const stack = createNativeStackNavigator();
 
 export default function BottomNavBar(){
     return(
@@ -67,7 +96,7 @@ export default function BottomNavBar(){
                     component={HomeScreen}
                     options={{ 
                         headerRight:() =>(
-                            <HeaderOptions />
+                            <HeaderOptions navigation/>
                         )
                     }}
                 />
@@ -76,7 +105,7 @@ export default function BottomNavBar(){
                     component={ClimbingScreen}  
                     options={{ 
                         headerRight:() =>(
-                            <HeaderOptions />
+                            <HeaderOptions navigation/>
                         )
                     }}
                 />
@@ -85,7 +114,7 @@ export default function BottomNavBar(){
                     component={CommunityScreen}
                     options={{ 
                         headerRight:() =>(
-                            <HeaderOptions />
+                            <HeaderOptions navigation/>
                         )
                     }} 
                 />
@@ -94,12 +123,15 @@ export default function BottomNavBar(){
                     component={ProfileScreen}
                     options={{ 
                         headerRight:() =>(
-                            <HeaderOptions />
+                            <HeaderOptions navigation/>
                         )
                     }} 
                 />
+                <stack.Screen name={gymName} component={GymScreen} />
+                <stack.Screen name={settingsName} component={SettingsScreen} />
             </tab.Navigator>
         </NavigationContainer>
+    
 
     )
 }
