@@ -40,25 +40,42 @@ function HeaderOptions() {
     );
 }
 
-function Nav(){
+function BottomNav(){
     return(
-        <stack.Navigator
+        <tab.Navigator
             screenOptions={({route}) => ({
                 tabBarIcon: ({focused, color, size}) => {
                     let iconName;
                     let rn = route.name;
-                    if(rn === gymName){
-                        iconName = focused ? 'wallet' : 'wallet-outline';
+                    if(rn === homeName){
+                        iconName = focused ? 'home' : 'home-outline';
                     } else if(rn === climbingName){
-                        iconName = focused ? 'settings' : 'settings-outline';
+                        iconName = focused ? 'barbell' : 'barbell-outline';
+                    } else if(rn === communityName){
+                        iconName = focused ? 'people' : 'people-outline';
+                    } else if(rn === profileName){
+                        iconName = focused ? 'person' : 'person-outline';
                     }
                     return <IonIcons name={iconName} size={size} color={color} />
                 },
             })}
+            tabBarOptions={{
+                activeTintColor: 'tomato',
+                inactiveTintColor: 'gray',
+            }}
         >
-            <stack.Screen name={gymName} component={GymScreen} />
-            <stack.Screen name={settingsName} component={SettingsScreen} />
-        </stack.Navigator>
+            <tab.Screen 
+                name={homeName} 
+                component={HomeScreen}
+                options={{ 
+                    headerRight:() =>(
+                        <HeaderOptions/>
+                    )
+                }} />
+            <tab.Screen name={climbingName} component={ClimbingScreen} />
+            <tab.Screen name={communityName} component={CommunityScreen} />
+            <tab.Screen name={profileName} component={ProfileScreen} />
+        </tab.Navigator>
     )
 }
 
@@ -69,67 +86,9 @@ const stack = createNativeStackNavigator();
 export default function BottomNavBar(){
     return(
         <NavigationContainer>
-            <tab.Navigator
-                initialRouteName={homeName}
-                screenOptions={({route}) => ({
-                    tabBarActiveTintColor: '#e91e63',
-                    tabBarInactiveTintColor: 'black',
-                    tabBarLabelStyle: {fontSize: 10, paddingBottom: 10},
-                    tabBarStyle: {height: 70, padding:10},
-                    tabBarIcon: ({focused, color, size}) => {
-                        let iconName;
-                        let rn = route.name;
-                        if(rn === homeName){
-                            iconName = focused ? 'home' : 'home-outline';
-                        } else if(rn === climbingName){
-                            iconName = focused ? 'fitness' : 'fitness-outline';
-                        } else if(rn === communityName){
-                            iconName = focused ? 'chatbubbles' : 'chatbubbles-outline';
-                        } else if(rn === profileName){
-                            iconName = focused ? 'person' : 'person-outline';
-                        }
-                        return <IonIcons name={iconName} size={size} color={color} />
-                    },
-                })}>
-                <tab.Screen 
-                    name={homeName} 
-                    component={HomeScreen}
-                    options={{ 
-                        headerRight:() =>(
-                            <HeaderOptions navigation/>
-                        )
-                    }}
-                />
-                <tab.Screen 
-                    name={climbingName} 
-                    component={ClimbingScreen}  
-                    options={{ 
-                        headerRight:() =>(
-                            <HeaderOptions navigation/>
-                        )
-                    }}
-                />
-                <tab.Screen 
-                    name={communityName} 
-                    component={CommunityScreen}
-                    options={{ 
-                        headerRight:() =>(
-                            <HeaderOptions navigation/>
-                        )
-                    }} 
-                />
-                <tab.Screen 
-                    name={profileName} 
-                    component={ProfileScreen}
-                    options={{ 
-                        headerRight:() =>(
-                            <HeaderOptions navigation/>
-                        )
-                    }} 
-                />
-                <stack.Screen name={gymName} component={GymScreen} />
-                <stack.Screen name={settingsName} component={SettingsScreen} />
-            </tab.Navigator>
+            <BottomNav/>
+            <stack.Screen name={gymName} component={GymScreen} />
+            <stack.Screen name={settingsName} component={SettingsScreen} />
         </NavigationContainer>
     
 
