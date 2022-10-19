@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         flex: 1,
         width:null,
         height:null,
-        backgroundColor: 'blue',
+        backgroundColor: 'grey',
         resizeMode:'cover',
     }
 });

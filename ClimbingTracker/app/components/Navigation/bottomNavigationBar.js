@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { View, Text, Image } from 'react-native';
 import {NavigationContainer, TouchableOpacity, useNavigation} from '@react-navigation/native'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 //Screens
 import HomeScreen from '../../screens/HomeScreen';
