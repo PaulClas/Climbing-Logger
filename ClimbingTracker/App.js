@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, SafeAreaView} from 'react-native';
-import BottomNavBar from './app/components/bottomNavigationBar';
+import BottomNavBar from './app/components/Navigation/bottomNavigationBar';
 
 export default function App() {
   return (
