@@ -7,14 +7,14 @@ import HomeScreen from '../../screens/HomeScreen';
 import ClimbingScreen from '../../screens/ClimbingScreen';  
 import CommunityScreen from '../../screens/CommunityScreen';
 import ProfileScreen from '../../screens/ProfileScreen';
-import GymScreen from '../../screens/MygymScreen';
+import SearchScreen from '../../screens/SearchScreen';
 
 //Screen Names
 const homeName = "Home";
 const climbingName = "Climbing";
 const communityName = "Chat";
 const profileName = "Profile";
-const gymName = "Search";
+const searchName = "Search";
 
 const tab= createBottomTabNavigator();
 
@@ -28,7 +28,7 @@ export default function BottomNavBar(){
                         let rn = route.name;
                         if(rn === homeName){
                             iconName = focused ? 'home' : 'home-outline';
-                        } else if(rn === gymName){
+                        } else if(rn === searchName){
                             iconName = focused ? 'search' : 'search-outline';
                         } else if(rn === climbingName){
                             iconName = focused ? 'play-circle' : 'play-circle-outline';
@@ -47,7 +47,7 @@ export default function BottomNavBar(){
                 })}
             >
                 <tab.Screen name={homeName} component={HomeScreen} />
-                <tab.Screen name={gymName} component={GymScreen} />
+                <tab.Screen name={searchName} component={SearchScreen} />
                 <tab.Screen name={climbingName} component={ClimbingScreen} />
                 <tab.Screen name={communityName} component={CommunityScreen} />
                 <tab.Screen name={profileName} component={ProfileScreen} />
