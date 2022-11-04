@@ -3,6 +3,8 @@ import { StyleSheet, SafeAreaView, View, Text, Button } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import ClimbingTabScreen from './ClimbingTabs/ClimbingTabScreen';
+import { WorkoutTabScreen } from './ClimbingTabs/WorkoutTabScreen';
+import { ChallengesTabScreen } from './ClimbingTabs/ChallengesTabScreen';
 
 // function CTabScreen() {
 //     return (
@@ -23,21 +25,6 @@ import ClimbingTabScreen from './ClimbingTabs/ClimbingTabScreen';
 //     );
 // }
 
-function ChallengesTabScreen() {
-    return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>Climbing!</Text>
-        </View>
-    );
-}
-
-function WorkoutTabScreen() {
-    return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>Climbing!</Text>
-        </View>
-    );
-}
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -56,7 +43,6 @@ function ClimbingTabs(){
             <Tab.Screen name="Workout" component={WorkoutTabScreen} />
         </Tab.Navigator>
     )
-
 }
 
 export default function ClimbingScreen({navigation}) {
