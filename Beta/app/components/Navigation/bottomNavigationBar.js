@@ -44,6 +44,7 @@ export default function BottomNavBar(){
                     tabBarLabelStyle: {fontSize: 12, fontWeight: 'bold', marginBottom: 10},
                     activeTintColor: 'tomato',
                     inactiveTintColor: 'gray',
+                    tabBarHideOnKeyboard: true
                 })}
             >
                 <tab.Screen name={homeName} component={HomeScreen} />
